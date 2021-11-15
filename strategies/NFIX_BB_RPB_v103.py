@@ -102,7 +102,7 @@ else:
 ###########################################################################################################
 
 
-class NFIX_BB_RPB(IStrategy):
+class NFIX_BB_RPB_v103(IStrategy):
     INTERFACE_VERSION = 2
 
     # ROI table:
