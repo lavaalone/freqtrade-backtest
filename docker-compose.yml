@@ -11,7 +11,7 @@ services:
     command: >
       backtesting
       --strategy-list NFIX_BB_RPB_v103 NFIX_BB_RPB_v104 NostalgiaForInfinityX NostalgiaForInfinityNext NostalgiaForInfinityNextGen BB_RPB_TSL_v102 BB_RPB_TSL_v103 BB_RPB_TSL_v104
-      --timerange ${TIMERANGE:-20211101-20211114}
+      --timerange ${TIMERANGE:-20211101-20211115}
       --config user_data/data/pairlists.json
       --config user_data/data/${EXCHANGE:-kucoin}-usdt-static.json
       --max-open-trades ${MAX_OPEN_TRADES:-5}
@@ -24,7 +24,7 @@ services:
       - "./user_data:/freqtrade/user_data"
     command: >
       download-data
-      --timerange ${START_DATE:-20211101}-${END_DATE:-20211114}
+      --timerange ${START_DATE:-20211101}-${END_DATE:-20211115}
       --timeframe 5m 15m 1h
       --datadir user_data/data/${EXCHANGE:-kucoin}
       --config user_data/data/pairlists.json
