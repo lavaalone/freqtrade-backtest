@@ -1,0 +1,49 @@
+{
+    "exchange": {
+        "pair_blacklist": [
+            // Exchange Tokens
+            "GT/.*",
+            // Leverage tokens
+            ".*(3|3L|3S)/.*",
+            // Fiat
+            "(AUD|EUR|GBP|CHF|CAD|JPY)/.*",
+            // Stable tokens
+            "(BUSD|USDT|TUSD|USDC|CUSDT|DAI|USDN|CUSD)/.*",
+            // FAN Tokens
+            "(ACM|AFA|ALA|ALL|APL|ASR|ATM|BAR|CAI|CITY|FOR|GAL|GOZ|IBFK|JUV|LEG|LOCK-1|NAVI|NMR|NOV|OG|PFL|PORTO|PSG|ROUSH|STV|TH|TRA|UCH|UFC|YBO)/.*",
+            // Other Coins
+            "(CHZ|SLP|XVS|MEM|AMPL|XYM|CARR|SKEY|MASK|KLV)/.*",
+			".*(5|5L|5S)/.*",
+			"KRL/USDT",
+			"CTSI/USDT",
+			"KEEP/USDT",
+			"FLAME/USDT",
+			"TOKO/USDT",
+			"XYO/USDT",
+			"ZCX/USDT",
+			"LPT/USDT",
+			"ROSE/USDT",
+			"LSS/USDT",
+			"STPT/USDT",
+			"DATA/USDT",
+			"STX/USDT",
+			"POLK/USDT",
+			"SYS/USDT",
+			"GENS/USDT",
+			"FIDA/USDT",
+			"MKR/USDT",
+			"SOLVE/USDT",
+			"HTR/USDT",
+			"CIX100/USDT",
+			"SAITAMA/USDT",
+			"ATP/USDT",
+			"AUDIO/USDT",
+			"MYTH/USDT",
+			"THG/USDT",
+			"ALICE/USDT",
+			"SOUL/USDT",
+			"STARL/USDT",
+			"(LPT|LRC|LTX|MIR|STMX|SXP|ZEC|VELO|SUN|CIRUS|REVV|XSR|VSYS|CBC|SCLP|ANKR|UOS|PNT)/.*",
+        ]
+    }
+}

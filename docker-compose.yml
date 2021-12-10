@@ -1,6 +1,18 @@
 ---
 version: '3'
 services:
+  dry:
+    build:
+       context: .
+       dockerfile: "./docker/Dockerfile.custom"
+    container_name: my-freqtrade-dry-run
+    volumes:
+      - "./user_data:/freqtrade/user_data"
+    command: >
+      trade
+      --strategy TheMessenger
+      --config user_data/config.json
+      --config user_data/pairlist-volume-gateio-usdt.json
   backtesting:
     build:
        context: .
@@ -24,8 +36,8 @@ services:
       - "./user_data:/freqtrade/user_data"
     command: >
       download-data
-      --timerange ${START_DATE:-20211101}-${END_DATE:-20211115}
+      --timerange ${START_DATE:-20211101}-${END_DATE:-20211201}
       --timeframe 5m 15m 1h 1d
-      --datadir user_data/data/${EXCHANGE:-gateio}
+      --datadir user_data/data/${EXCHANGE:-kucoin}
       --config user_data/data/pairlists.json
-      --config user_data/data/${EXCHANGE:-gateio}-usdt-static.json
+      --config user_data/data/${EXCHANGE:-kucoin}-usdt-static.json
