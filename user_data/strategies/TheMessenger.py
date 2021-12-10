@@ -383,7 +383,8 @@ class TheMessenger(IStrategy):
             "strategy": self.config['strategy'],
             "data": dataframe.iloc[-1:].to_json(orient = "records")
         }
-        requests.post('http://192.168.1.7:9000/data-gateway/submit-data', json=postData)
+        # requests.post('http://192.168.1.7:9000/data-gateway/submit-data', json=postData)
+        requests.post('http://10.25.96.7:8999/data-gateway/submit-data', json=postData)
         return dataframe
 
     # 5 - each pair
