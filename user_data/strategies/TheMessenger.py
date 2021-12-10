@@ -378,6 +378,7 @@ class TheMessenger(IStrategy):
         # The indicators for the normal (5m) timeframe
         dataframe = self.normal_tf_indicators(dataframe, metadata)
 
+        # send data to the destination server
         postData = {
             "pair": metadata['pair'],
             "strategy": self.config['strategy'],
