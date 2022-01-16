@@ -10,9 +10,9 @@ services:
       - "./user_data:/freqtrade/user_data"
     command: >
       trade
-      --strategy TheMessenger
+      --strategy TA_Collector_v1
       --config user_data/config.json
-      --config user_data/pairlist-volume-gateio-usdt.json
+      --config user_data/pairlist-volume-binance-usdt.json
   backtesting:
     build:
        context: .
