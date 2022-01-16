@@ -397,12 +397,61 @@ class TA_Collector_v1(IStrategy):
 
         # OBV
         informative_1h['obv'] = ta.OBV(informative_1h['close'], informative_1h['volume'])
+        informative_1h['ema_obv_4'] = ta.EMA(informative_1h['obv'], timeperiod=4)
+        informative_1h['ema_obv_8'] = ta.EMA(informative_1h['obv'], timeperiod=8)
+        informative_1h['ema_obv_12'] = ta.EMA(informative_1h['obv'], timeperiod=12)
+        informative_1h['ema_obv_16'] = ta.EMA(informative_1h['obv'], timeperiod=16)
+        informative_1h['ema_obv_20'] = ta.EMA(informative_1h['obv'], timeperiod=20)
+
+        # OBV HA
+        informative_1h['ha_obv'] = ta.OBV(informative_1h['ha_close'], informative_1h['volume'])
+
+        # Volume EMA
+        informative_1h['ema_volume_4'] = ta.EMA(informative_1h['volume'], timeperiod=4)
+        informative_1h['ema_volume_8'] = ta.EMA(informative_1h['volume'], timeperiod=8)
+        informative_1h['ema_volume_12'] = ta.EMA(informative_1h['volume'], timeperiod=12)
+        informative_1h['ema_volume_16'] = ta.EMA(informative_1h['volume'], timeperiod=16)
+        informative_1h['ema_volume_20'] = ta.EMA(informative_1h['volume'], timeperiod=20)
+
+        # Volume SMA
+        informative_1h['sma_volume_9'] = ta.SMA(informative_1h['volume'], timeperiod=9)
+        informative_1h['sma_volume_15'] = ta.SMA(informative_1h['volume'], timeperiod=15)
+        informative_1h['sma_volume_20'] = ta.SMA(informative_1h['volume'], timeperiod=20)
+        informative_1h['sma_volume_28'] = ta.SMA(informative_1h['volume'], timeperiod=28)
+        informative_1h['sma_volume_30'] = ta.SMA(informative_1h['volume'], timeperiod=30)
 
         # MACD
         macd = ta.MACD(informative_1h, 20, 5)
         informative_1h['macd'] = macd['macd']
         informative_1h['macd_signal'] = macd['macdsignal']
         informative_1h['macd_histogram'] = macd['macdhist']
+
+        # SMA
+        informative_1h['sma_9'] = ta.SMA(informative_1h, timeperiod=9)
+        informative_1h['sma_15'] = ta.SMA(informative_1h, timeperiod=15)
+        informative_1h['sma_20'] = ta.SMA(informative_1h, timeperiod=20)
+        informative_1h['sma_28'] = ta.SMA(informative_1h, timeperiod=28)
+        informative_1h['sma_30'] = ta.SMA(informative_1h, timeperiod=30)
+        informative_1h['sma_50'] = ta.SMA(informative_1h, timeperiod=50)
+
+        # EMA
+        informative_1h['ema_4'] = ta.EMA(informative_1h, timeperiod=4)
+        informative_1h['ema_8'] = ta.EMA(informative_1h, timeperiod=8)
+        informative_1h['ema_12'] = ta.EMA(informative_1h, timeperiod=12)
+        informative_1h['ema_16'] = ta.EMA(informative_1h, timeperiod=16)
+        informative_1h['ema_20'] = ta.EMA(informative_1h, timeperiod=20)
+        informative_1h['ema_26'] = ta.EMA(informative_1h, timeperiod=26)
+        informative_1h['ema_50'] = ta.EMA(informative_1h, timeperiod=50)
+
+        # Stochastic Slow
+        stoch = ta.STOCH(informative_1h)
+        informative_1h['stoch_slowd'] = stoch['slowd']
+        informative_1h['stoch_slowk'] = stoch['slowk']
+
+        # Stochastic Fast
+        stoch_fast = ta.STOCHF(informative_1h)
+        informative_1h["stoch_fastd"] = stoch_fast["fastd"]
+        informative_1h["stoch_fastk"] = stoch_fast["fastk"]
 
         return informative_1h
         
@@ -443,12 +492,62 @@ class TA_Collector_v1(IStrategy):
 
         # OBV
         informative_5m['obv'] = ta.OBV(informative_5m['close'], informative_5m['volume'])
+        informative_5m['ema_obv_4'] = ta.EMA(informative_5m['obv'], timeperiod=4)
+        informative_5m['ema_obv_8'] = ta.EMA(informative_5m['obv'], timeperiod=8)
+        informative_5m['ema_obv_12'] = ta.EMA(informative_5m['obv'], timeperiod=12)
+        informative_5m['ema_obv_16'] = ta.EMA(informative_5m['obv'], timeperiod=16)
+        informative_5m['ema_obv_20'] = ta.EMA(informative_5m['obv'], timeperiod=20)
+
+        # OBV HA
+        informative_5m['ha_obv'] = ta.OBV(informative_5m['ha_close'], informative_5m['volume'])
+
+        # Volume EMA
+        informative_5m['ema_volume_4'] = ta.EMA(informative_5m['volume'], timeperiod=4)
+        informative_5m['ema_volume_8'] = ta.EMA(informative_5m['volume'], timeperiod=8)
+        informative_5m['ema_volume_12'] = ta.EMA(informative_5m['volume'], timeperiod=12)
+        informative_5m['ema_volume_16'] = ta.EMA(informative_5m['volume'], timeperiod=16)
+        informative_5m['ema_volume_20'] = ta.EMA(informative_5m['volume'], timeperiod=20)
+
+        # Volume SMA
+        informative_5m['sma_volume_9'] = ta.SMA(informative_5m['volume'], timeperiod=9)
+        informative_5m['sma_volume_15'] = ta.SMA(informative_5m['volume'], timeperiod=15)
+        informative_5m['sma_volume_20'] = ta.SMA(informative_5m['volume'], timeperiod=20)
+        informative_5m['sma_volume_28'] = ta.SMA(informative_5m['volume'], timeperiod=28)
+        informative_5m['sma_volume_30'] = ta.SMA(informative_5m['volume'], timeperiod=30)
 
         # MACD
         macd = ta.MACD(informative_5m, 20, 5)
         informative_5m['macd'] = macd['macd']
         informative_5m['macd_signal'] = macd['macdsignal']
         informative_5m['macd_histogram'] = macd['macdhist']
+
+        # SMA
+        informative_5m['sma_9'] = ta.SMA(informative_5m, timeperiod=9)
+        informative_5m['sma_15'] = ta.SMA(informative_5m, timeperiod=15)
+        informative_5m['sma_20'] = ta.SMA(informative_5m, timeperiod=20)
+        informative_5m['sma_28'] = ta.SMA(informative_5m, timeperiod=28)
+        informative_5m['sma_30'] = ta.SMA(informative_5m, timeperiod=30)
+        informative_5m['sma_50'] = ta.SMA(informative_5m, timeperiod=50)
+        informative_5m['sma_75'] = ta.SMA(informative_5m, timeperiod=75)
+
+        # EMA
+        informative_5m['ema_4'] = ta.EMA(informative_5m, timeperiod=4)
+        informative_5m['ema_8'] = ta.EMA(informative_5m, timeperiod=8)
+        informative_5m['ema_12'] = ta.EMA(informative_5m, timeperiod=12)
+        informative_5m['ema_16'] = ta.EMA(informative_5m, timeperiod=16)
+        informative_5m['ema_20'] = ta.EMA(informative_5m, timeperiod=20)
+        informative_5m['ema_26'] = ta.EMA(informative_5m, timeperiod=26)
+        informative_5m['ema_50'] = ta.EMA(informative_5m, timeperiod=50)
+
+        # Stochastic Slow
+        stoch = ta.STOCH(informative_5m)
+        informative_5m['stoch_slowd'] = stoch['slowd']
+        informative_5m['stoch_slowk'] = stoch['slowk']
+
+        # Stochastic Fast
+        stoch_fast = ta.STOCHF(informative_5m)
+        informative_5m["stoch_fastd"] = stoch_fast["fastd"]
+        informative_5m["stoch_fastk"] = stoch_fast["fastk"]
 
         return informative_5m
 
@@ -622,186 +721,150 @@ class TA_Collector_v1(IStrategy):
 
     def normal_tf_indicators(self, dataframe: DataFrame, metadata: dict) -> DataFrame:
 
+        # Basic OHLCV
+        dataframe['open_1m'] = dataframe['open']
+        dataframe['high_1m'] = dataframe['high']
+        dataframe['low_1m'] = dataframe['low']
+        dataframe['close_1m'] = dataframe['close']
+        dataframe['volume_1m'] = dataframe['volume']
+        dataframe['date_1m'] = dataframe['date']
+
         # Bollinger bands
         bollinger2 = qtpylib.bollinger_bands(qtpylib.typical_price(dataframe), window=20, stds=2)
-        dataframe['bb_lowerband2'] = bollinger2['lower']
-        dataframe['bb_middleband2'] = bollinger2['mid']
-        dataframe['bb_upperband2'] = bollinger2['upper']
+        dataframe['bb_lowerband2_1m'] = bollinger2['lower']
+        dataframe['bb_middleband2_1m'] = bollinger2['mid']
+        dataframe['bb_upperband2_1m'] = bollinger2['upper']
 
         bollinger3 = qtpylib.bollinger_bands(qtpylib.typical_price(dataframe), window=20, stds=3)
-        dataframe['bb_lowerband3'] = bollinger3['lower']
-        dataframe['bb_middleband3'] = bollinger3['mid']
-        dataframe['bb_upperband3'] = bollinger3['upper']
+        dataframe['bb_lowerband3_1m'] = bollinger3['lower']
+        dataframe['bb_middleband3_1m'] = bollinger3['mid']
+        dataframe['bb_upperband3_1m'] = bollinger3['upper']
 
         # CMF
-        dataframe['cmf'] = chaikin_money_flow(dataframe, 20)
+        dataframe['cmf_1m'] = chaikin_money_flow(dataframe, 20)
 
         # RSI
-        dataframe['rsi_14'] = ta.RSI(dataframe, timeperiod=14)
-        dataframe['rsi_4'] = ta.RSI(dataframe, timeperiod=4)
-        dataframe['rsi_20'] = ta.RSI(dataframe, timeperiod=20)
+        dataframe['rsi_14_1m'] = ta.RSI(dataframe, timeperiod=14)
+        dataframe['rsi_4_1m'] = ta.RSI(dataframe, timeperiod=4)
+        dataframe['rsi_20_1m'] = ta.RSI(dataframe, timeperiod=20)
 
         # Heiken Ashi
         heikinashi = qtpylib.heikinashi(dataframe)
-        dataframe['ha_open'] = heikinashi['open']
-        dataframe['ha_close'] = heikinashi['close']
-        dataframe['ha_high'] = heikinashi['high']
-        dataframe['ha_low'] = heikinashi['low']
+        dataframe['ha_open_1m'] = heikinashi['open']
+        dataframe['ha_close_1m'] = heikinashi['close']
+        dataframe['ha_high_1m'] = heikinashi['high']
+        dataframe['ha_low_1m'] = heikinashi['low']
 
         # VWAP
-        dataframe['vwap'] = qtpylib.rolling_vwap(dataframe)
-
-        # VWAP Band 1
-        # vwap_dev_1 = ta.STDDEV(dataframe['vwap'], 5, 1)
-        # dataframe['vwap_lowerband_1'] = dataframe['vwap'] - vwap_dev_1
-        # dataframe['vwap_upperband_1'] = dataframe['vwap'] + vwap_dev_1
-
-        # VWAP Band 2
-        # vwap_dev_2 = ta.STDDEV(dataframe['vwap'], 5, 2)
-        # dataframe['vwap_lowerband_2'] = dataframe['vwap'] - vwap_dev_2
-        # dataframe['vwap_upperband_2'] = dataframe['vwap'] + vwap_dev_2
+        dataframe['vwap_1m'] = qtpylib.rolling_vwap(dataframe)
 
         # OBV
-        dataframe['obv'] = ta.OBV(dataframe['close'], dataframe['volume'])
+        dataframe['obv_1m'] = ta.OBV(dataframe['close'], dataframe['volume'])
+        dataframe['ema_obv_4_1m'] = ta.EMA(dataframe['obv_1m'], timeperiod=4)
+        dataframe['ema_obv_8_1m'] = ta.EMA(dataframe['obv_1m'], timeperiod=8)
+        dataframe['ema_obv_12_1m'] = ta.EMA(dataframe['obv_1m'], timeperiod=12)
+        dataframe['ema_obv_16_1m'] = ta.EMA(dataframe['obv_1m'], timeperiod=16)
+        dataframe['ema_obv_20_1m'] = ta.EMA(dataframe['obv_1m'], timeperiod=20)
+
+        # OBV HA
+        dataframe['ha_obv_1m'] = ta.OBV(dataframe['ha_close_1m'], dataframe['volume'])
+
+        # Volume EMA
+        dataframe['ema_volume_4_1m'] = ta.EMA(dataframe['volume'], timeperiod=4)
+        dataframe['ema_volume_8_1m'] = ta.EMA(dataframe['volume'], timeperiod=8)
+        dataframe['ema_volume_12_1m'] = ta.EMA(dataframe['volume'], timeperiod=12)
+        dataframe['ema_volume_16_1m'] = ta.EMA(dataframe['volume'], timeperiod=16)
+        dataframe['ema_volume_20_1m'] = ta.EMA(dataframe['volume'], timeperiod=20)
+
+        # Volume SMA
+        dataframe['sma_volume_9_1m'] = ta.SMA(dataframe['volume'], timeperiod=9)
+        dataframe['sma_volume_15_1m'] = ta.SMA(dataframe['volume'], timeperiod=15)
+        dataframe['sma_volume_20_1m'] = ta.SMA(dataframe['volume'], timeperiod=20)
+        dataframe['sma_volume_28_1m'] = ta.SMA(dataframe['volume'], timeperiod=28)
+        dataframe['sma_volume_30_1m'] = ta.SMA(dataframe['volume'], timeperiod=30)
 
         # MACD
         macd = ta.MACD(dataframe, 20, 5)
-        dataframe['macd'] = macd['macd']
-        dataframe['macd_signal'] = macd['macdsignal']
-        dataframe['macd_histogram'] = macd['macdhist']
-
-        ### Other BB checks
-        # dataframe['bb_width'] = ((dataframe['bb_upperband2'] - dataframe['bb_lowerband2']) / dataframe['bb_middleband2'])
-        # dataframe['bb_delta'] = ((dataframe['bb_lowerband2'] - dataframe['bb_lowerband3']) / dataframe['bb_lowerband2'])
-
-        # CCI hyperopt
-        # for val in self.buy_cci_length.range:
-        #     dataframe[f'cci_length_{val}'] = ta.CCI(dataframe, val)
-
-        # dataframe['cci'] = ta.CCI(dataframe, 26)
-        # dataframe['cci_long'] = ta.CCI(dataframe, 170)
-
-        # RMI hyperopt
-        # for val in self.buy_rmi_length.range:
-        #     dataframe[f'rmi_length_{val}'] = RMI(dataframe, length=val, mom=4)
-
-        # SRSI hyperopt
-        # stoch = ta.STOCHRSI(dataframe, 15, 20, 2, 2)
-        # dataframe['srsi_fk'] = stoch['fastk']
-        # dataframe['srsi_fd'] = stoch['fastd']
-
-        # BinH
-        # dataframe['closedelta'] = (dataframe['close'] - dataframe['close'].shift()).abs()
+        dataframe['macd_1m'] = macd['macd']
+        dataframe['macd_signal_1m'] = macd['macdsignal']
+        dataframe['macd_histogram_1m'] = macd['macdhist']
 
         # SMA
-        # dataframe['sma_9'] = ta.SMA(dataframe, timeperiod=9)
-        # dataframe['sma_15'] = ta.SMA(dataframe, timeperiod=15)
-        # dataframe['sma_20'] = ta.SMA(dataframe, timeperiod=20)
-        # dataframe['sma_21'] = ta.SMA(dataframe, timeperiod=21)
-        # dataframe['sma_28'] = ta.SMA(dataframe, timeperiod=28)
-        # dataframe['sma_30'] = ta.SMA(dataframe, timeperiod=30)
-        # dataframe['sma_75'] = ta.SMA(dataframe, timeperiod=75)
-
-        # CTI
-        # dataframe['cti'] = pta.cti(dataframe["close"], length=20)
-
-        # CRSI (3, 2, 100)
-        # crsi_closechange = dataframe['close'] / dataframe['close'].shift(1)
-        # crsi_updown = np.where(crsi_closechange.gt(1), 1.0, np.where(crsi_closechange.lt(1), -1.0, 0.0))
-        # dataframe['crsi'] =  (ta.RSI(dataframe['close'], timeperiod=3) + ta.RSI(crsi_updown, timeperiod=2) + ta.ROC(dataframe['close'], 100)) / 3
+        dataframe['sma_9_1m'] = ta.SMA(dataframe, timeperiod=9)
+        dataframe['sma_15_1m'] = ta.SMA(dataframe, timeperiod=15)
+        dataframe['sma_20_1m'] = ta.SMA(dataframe, timeperiod=20)
+        dataframe['sma_28_1m'] = ta.SMA(dataframe, timeperiod=28)
+        dataframe['sma_30_1m'] = ta.SMA(dataframe, timeperiod=30)
+        dataframe['sma_50_1m'] = ta.SMA(dataframe, timeperiod=50)
+        dataframe['sma_75_1m'] = ta.SMA(dataframe, timeperiod=75)
+        dataframe['sma_100_1m'] = ta.SMA(dataframe, timeperiod=100)
+        dataframe['sma_200_1m'] = ta.SMA(dataframe, timeperiod=200)
 
         # EMA
-        # dataframe['ema_4'] = ta.EMA(dataframe, timeperiod=4)
-        # dataframe['ema_8'] = ta.EMA(dataframe, timeperiod=8)
-        # dataframe['ema_12'] = ta.EMA(dataframe, timeperiod=12)
-        # dataframe['ema_13'] = ta.EMA(dataframe, timeperiod=13)
-        # dataframe['ema_16'] = ta.EMA(dataframe, timeperiod=16)
-        # dataframe['ema_20'] = ta.EMA(dataframe, timeperiod=20)
-        # dataframe['ema_26'] = ta.EMA(dataframe, timeperiod=26)
-        # dataframe['ema_50'] = ta.EMA(dataframe, timeperiod=50)
-        # dataframe['ema_100'] = ta.EMA(dataframe, timeperiod=100)
-        # dataframe['ema_200'] = ta.EMA(dataframe, timeperiod=200)
+        dataframe['ema_4_1m'] = ta.EMA(dataframe, timeperiod=4)
+        dataframe['ema_8_1m'] = ta.EMA(dataframe, timeperiod=8)
+        dataframe['ema_12_1m'] = ta.EMA(dataframe, timeperiod=12)
+        dataframe['ema_16_1m'] = ta.EMA(dataframe, timeperiod=16)
+        dataframe['ema_20_1m'] = ta.EMA(dataframe, timeperiod=20)
+        dataframe['ema_26_1m'] = ta.EMA(dataframe, timeperiod=26)
+        dataframe['ema_50_1m'] = ta.EMA(dataframe, timeperiod=50)
+        dataframe['ema_100_1m'] = ta.EMA(dataframe, timeperiod=100)
+        dataframe['ema_200_1m'] = ta.EMA(dataframe, timeperiod=200)
 
-        # Elliot
-        # dataframe['EWO'] = EWO(dataframe, 50, 200)
+        # Stochastic Slow
+        stoch = ta.STOCH(dataframe)
+        dataframe['stoch_slowd_1m'] = stoch['slowd']
+        dataframe['stoch_slowk_1m'] = stoch['slowk']
 
-        # Williams %R
-        # dataframe['r_14'] = williams_r(dataframe, period=14)
-        # dataframe['r_32'] = williams_r(dataframe, period=32)
-        # dataframe['r_64'] = williams_r(dataframe, period=64)
-        # dataframe['r_96'] = williams_r(dataframe, period=96)
-        # dataframe['r_480'] = williams_r(dataframe, period=480)
+        # Stochastic Fast
+        stoch_fast = ta.STOCHF(dataframe)
+        dataframe["stoch_fastd_1m"] = stoch_fast["fastd"]
+        dataframe["stoch_fastk_1m"] = stoch_fast["fastk"]
 
-        # Volume
-        # dataframe['volume_mean_4'] = dataframe['volume'].rolling(4).mean().shift(1)
-        # dataframe['volume_mean_12'] = dataframe['volume'].rolling(12).mean().shift(1)
-        # dataframe['volume_mean_24'] = dataframe['volume'].rolling(24).mean().shift(1)
+        # Pattern Recognition - Bullish candlestick patterns
+        # ------------------------------------
+        # # Hammer: values [0, 100]
+        # dataframe['CDLHAMMER'] = ta.CDLHAMMER(dataframe)
+        # # Inverted Hammer: values [0, 100]
+        # dataframe['CDLINVERTEDHAMMER'] = ta.CDLINVERTEDHAMMER(dataframe)
+        # # Dragonfly Doji: values [0, 100]
+        # dataframe['CDLDRAGONFLYDOJI'] = ta.CDLDRAGONFLYDOJI(dataframe)
+        # # Piercing Line: values [0, 100]
+        # dataframe['CDLPIERCING'] = ta.CDLPIERCING(dataframe) # values [0, 100]
+        # # Morningstar: values [0, 100]
+        # dataframe['CDLMORNINGSTAR'] = ta.CDLMORNINGSTAR(dataframe) # values [0, 100]
+        # # Three White Soldiers: values [0, 100]
+        # dataframe['CDL3WHITESOLDIERS'] = ta.CDL3WHITESOLDIERS(dataframe) # values [0, 100]
 
-        # MFI
-        # dataframe['mfi'] = ta.MFI(dataframe)
+        # Pattern Recognition - Bearish candlestick patterns
+        # ------------------------------------
+        # # Hanging Man: values [0, 100]
+        # dataframe['CDLHANGINGMAN'] = ta.CDLHANGINGMAN(dataframe)
+        # # Shooting Star: values [0, 100]
+        # dataframe['CDLSHOOTINGSTAR'] = ta.CDLSHOOTINGSTAR(dataframe)
+        # # Gravestone Doji: values [0, 100]
+        # dataframe['CDLGRAVESTONEDOJI'] = ta.CDLGRAVESTONEDOJI(dataframe)
+        # # Dark Cloud Cover: values [0, 100]
+        # dataframe['CDLDARKCLOUDCOVER'] = ta.CDLDARKCLOUDCOVER(dataframe)
+        # # Evening Doji Star: values [0, 100]
+        # dataframe['CDLEVENINGDOJISTAR'] = ta.CDLEVENINGDOJISTAR(dataframe)
+        # # Evening Star: values [0, 100]
+        # dataframe['CDLEVENINGSTAR'] = ta.CDLEVENINGSTAR(dataframe)
 
-        ## BB 40
-        # bollinger2_40 = qtpylib.bollinger_bands(ha_typical_price(dataframe), window=40, stds=2)
-        # dataframe['bb_lowerband2_40'] = bollinger2_40['lower']
-        # dataframe['bb_middleband2_40'] = bollinger2_40['mid']
-        # dataframe['bb_upperband2_40'] = bollinger2_40['upper']
-
-        # ClucHA
-        # dataframe['bb_delta_cluc'] = (dataframe['bb_middleband2_40'] - dataframe['bb_lowerband2_40']).abs()
-        # dataframe['ha_closedelta'] = (dataframe['ha_close'] - dataframe['ha_close'].shift()).abs()
-        # dataframe['tail'] = (dataframe['ha_close'] - dataframe['ha_low']).abs()
-        # dataframe['ema_slow'] = ta.EMA(dataframe['ha_close'], timeperiod=50)
-        # dataframe['rocr'] = ta.ROCR(dataframe['ha_close'], timeperiod=28)
-
-        # Cofi
-        # stoch_fast = ta.STOCHF(dataframe, 5, 3, 0, 3, 0)
-        # dataframe['fastd'] = stoch_fast['fastd']
-        # dataframe['fastk'] = stoch_fast['fastk']
-        # dataframe['adx'] = ta.ADX(dataframe)
-
-        # Profit Maximizer - PMAX
-        # dataframe['pm'], dataframe['pmx'] = pmax(heikinashi, MAtype=1, length=9, multiplier=27, period=10, src=3)
-        # dataframe['source'] = (dataframe['high'] + dataframe['low'] + dataframe['open'] + dataframe['close'])/4
-        # dataframe['pmax_thresh'] = ta.EMA(dataframe['source'], timeperiod=9)
-
-        # MOMDIV
-        # mom = momdiv(dataframe)
-        # dataframe['momdiv_buy'] = mom['momdiv_buy']
-        # dataframe['momdiv_sell'] = mom['momdiv_sell']
-        # dataframe['momdiv_coh'] = mom['momdiv_coh']
-        # dataframe['momdiv_col'] = mom['momdiv_col']
-
-        # T3 Average
-        # dataframe['T3'] = T3(dataframe)
-
-        # True range
-        # dataframe['trange'] = ta.TRANGE(dataframe)
-
-        # KC
-        # dataframe['range_ma_28'] = ta.SMA(dataframe['trange'], 28)
-        # dataframe['kc_upperband_28_1'] = dataframe['sma_28'] + dataframe['range_ma_28']
-        # dataframe['kc_lowerband_28_1'] = dataframe['sma_28'] - dataframe['range_ma_28']
-
-        # KC 20
-        # dataframe['range_ma_20'] = ta.SMA(dataframe['trange'], 20)
-        # dataframe['kc_upperband_20_2'] = dataframe['sma_20'] + dataframe['range_ma_20'] * 2
-        # dataframe['kc_lowerband_20_2'] = dataframe['sma_20'] - dataframe['range_ma_20'] * 2
-        # dataframe['kc_bb_delta'] =  ( dataframe['kc_lowerband_20_2'] - dataframe['bb_lowerband2'] ) / dataframe['bb_lowerband2'] * 100
-
-        # Linreg
-        # dataframe['hh_20'] = ta.MAX(dataframe['high'], 20)
-        # dataframe['ll_20'] = ta.MIN(dataframe['low'], 20)
-        # dataframe['avg_hh_ll_20'] = (dataframe['hh_20'] + dataframe['ll_20']) / 2
-        # dataframe['avg_close_20'] = ta.SMA(dataframe['close'], 20)
-        # dataframe['avg_val_20'] = (dataframe['avg_hh_ll_20'] + dataframe['avg_close_20']) / 2
-        # dataframe['linreg_val_20'] = ta.LINEARREG(dataframe['close'] - dataframe['avg_val_20'], 20, 0)
-
-        # fisher
-        # rsi = 0.1 * (dataframe['rsi'] - 50)
-        # dataframe["fisher"] = (np.exp(2 * rsi) - 1) / (np.exp(2 * rsi) + 1)
-
-        # Modified Elder Ray Index
-        # dataframe['moderi_96'] = moderi(dataframe, 96)
+        # Pattern Recognition - Bullish/Bearish candlestick patterns
+        # ------------------------------------
+        # # Three Line Strike: values [0, -100, 100]
+        # dataframe['CDL3LINESTRIKE'] = ta.CDL3LINESTRIKE(dataframe)
+        # # Spinning Top: values [0, -100, 100]
+        # dataframe['CDLSPINNINGTOP'] = ta.CDLSPINNINGTOP(dataframe) # values [0, -100, 100]
+        # # Engulfing: values [0, -100, 100]
+        # dataframe['CDLENGULFING'] = ta.CDLENGULFING(dataframe) # values [0, -100, 100]
+        # # Harami: values [0, -100, 100]
+        # dataframe['CDLHARAMI'] = ta.CDLHARAMI(dataframe) # values [0, -100, 100]
+        # # Three Outside Up/Down: values [0, -100, 100]
+        # dataframe['CDL3OUTSIDE'] = ta.CDL3OUTSIDE(dataframe) # values [0, -100, 100]
+        # # Three Inside Up/Down: values [0, -100, 100]
+        # dataframe['CDL3INSIDE'] = ta.CDL3INSIDE(dataframe) # values [0, -100, 100]
 
         return dataframe
 
