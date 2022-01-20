@@ -395,38 +395,20 @@ class TA_Collector_v1(IStrategy):
         # VWAP
         informative_1h['vwap'] = qtpylib.rolling_vwap(informative_1h)
 
+        # VWAP OSCILLATOR
+        informative_1h['vwap_osc'] = (informative_1h['close'] - informative_1h['vwap']) / informative_1h['vwap'] * 100
+
         # OBV
         informative_1h['obv'] = ta.OBV(informative_1h['close'], informative_1h['volume'])
-        # informative_1h['ema_obv_4'] = ta.EMA(informative_1h['obv'], timeperiod=4)
-        # informative_1h['ema_obv_8'] = ta.EMA(informative_1h['obv'], timeperiod=8)
-        # informative_1h['ema_obv_12'] = ta.EMA(informative_1h['obv'], timeperiod=12)
-        # informative_1h['ema_obv_16'] = ta.EMA(informative_1h['obv'], timeperiod=16)
-        # informative_1h['ema_obv_20'] = ta.EMA(informative_1h['obv'], timeperiod=20)
 
         # OBV HA
         informative_1h['ha_obv'] = ta.OBV(informative_1h['ha_close'], informative_1h['volume'])
 
         # OBV MA
         informative_1h['mobv_3'] = ta.SMA(informative_1h['ha_obv'], timeperiod=3)
-        # informative_1h['mobv_6'] = ta.SMA(informative_1h['ha_obv'], timeperiod=6)
-        # informative_1h['mobv_9'] = ta.SMA(informative_1h['ha_obv'], timeperiod=9)
 
         # OBV OSCILLATOR
         informative_1h['obv_osc'] = (informative_1h['ha_obv'] - informative_1h['mobv_3']) / informative_1h['mobv_3'] * 100
-
-        # Volume EMA
-        # informative_1h['ema_volume_4'] = ta.EMA(informative_1h['volume'], timeperiod=4)
-        # informative_1h['ema_volume_8'] = ta.EMA(informative_1h['volume'], timeperiod=8)
-        # informative_1h['ema_volume_12'] = ta.EMA(informative_1h['volume'], timeperiod=12)
-        # informative_1h['ema_volume_16'] = ta.EMA(informative_1h['volume'], timeperiod=16)
-        # informative_1h['ema_volume_20'] = ta.EMA(informative_1h['volume'], timeperiod=20)
-
-        # Volume SMA
-        # informative_1h['sma_volume_9'] = ta.SMA(informative_1h['volume'], timeperiod=9)
-        # informative_1h['sma_volume_15'] = ta.SMA(informative_1h['volume'], timeperiod=15)
-        # informative_1h['sma_volume_20'] = ta.SMA(informative_1h['volume'], timeperiod=20)
-        # informative_1h['sma_volume_28'] = ta.SMA(informative_1h['volume'], timeperiod=28)
-        # informative_1h['sma_volume_30'] = ta.SMA(informative_1h['volume'], timeperiod=30)
 
         # Volume Oscilator
         informative_1h['vma_20'] = ta.SMA(informative_1h['volume'], timeperiod=20)
@@ -439,24 +421,18 @@ class TA_Collector_v1(IStrategy):
         informative_1h['macd_histogram'] = macd['macdhist']
 
         # SMA
-        informative_1h['sma_3'] = ta.SMA(informative_1h, timeperiod=3)
         informative_1h['sma_6'] = ta.SMA(informative_1h, timeperiod=6)
         informative_1h['sma_9'] = ta.SMA(informative_1h, timeperiod=9)
-        informative_1h['sma_osc'] = (informative_1h['sma_3'] - informative_1h['sma_6']) / informative_1h['sma_6'] * 100
-        # informative_1h['sma_15'] = ta.SMA(informative_1h, timeperiod=15)
-        # informative_1h['sma_20'] = ta.SMA(informative_1h, timeperiod=20)
-        # informative_1h['sma_28'] = ta.SMA(informative_1h, timeperiod=28)
-        # informative_1h['sma_30'] = ta.SMA(informative_1h, timeperiod=30)
-        # informative_1h['sma_50'] = ta.SMA(informative_1h, timeperiod=50)
+        informative_1h['sma_30'] = ta.SMA(informative_1h, timeperiod=30)
+        informative_1h['sma_60'] = ta.SMA(informative_1h, timeperiod=60)
+        informative_1h['sma_100'] = ta.SMA(informative_1h, timeperiod=100)
 
-        # EMA
-        # informative_1h['ema_4'] = ta.EMA(informative_1h, timeperiod=4)
-        # informative_1h['ema_8'] = ta.EMA(informative_1h, timeperiod=8)
-        # informative_1h['ema_12'] = ta.EMA(informative_1h, timeperiod=12)
-        # informative_1h['ema_16'] = ta.EMA(informative_1h, timeperiod=16)
-        # informative_1h['ema_20'] = ta.EMA(informative_1h, timeperiod=20)
-        # informative_1h['ema_26'] = ta.EMA(informative_1h, timeperiod=26)
-        # informative_1h['ema_50'] = ta.EMA(informative_1h, timeperiod=50)
+        # SMA OSCILLATOR
+        informative_1h['sma_6_osc'] = (informative_1h['close'] - informative_1h['sma_6']) / informative_1h['sma_6'] * 100
+        informative_1h['sma_9_osc'] = (informative_1h['close'] - informative_1h['sma_9']) / informative_1h['sma_9'] * 100
+        informative_1h['sma_30_osc'] = (informative_1h['close'] - informative_1h['sma_30']) / informative_1h['sma_30'] * 100
+        informative_1h['sma_60_osc'] = (informative_1h['close'] - informative_1h['sma_60']) / informative_1h['sma_60'] * 100
+        informative_1h['sma_100_osc'] = (informative_1h['close'] - informative_1h['sma_100']) / informative_1h['sma_100'] * 100
 
         # Stochastic Slow
         stoch = ta.STOCH(informative_1h)
@@ -506,38 +482,20 @@ class TA_Collector_v1(IStrategy):
         # VWAP
         informative_5m['vwap'] = qtpylib.rolling_vwap(informative_5m)
 
+        # VWAP OSCILLATOR
+        informative_5m['vwap_osc'] = (informative_5m['close'] - informative_5m['vwap']) / informative_5m['vwap'] * 100
+
         # OBV
         informative_5m['obv'] = ta.OBV(informative_5m['close'], informative_5m['volume'])
-        # informative_5m['ema_obv_4'] = ta.EMA(informative_5m['obv'], timeperiod=4)
-        # informative_5m['ema_obv_8'] = ta.EMA(informative_5m['obv'], timeperiod=8)
-        # informative_5m['ema_obv_12'] = ta.EMA(informative_5m['obv'], timeperiod=12)
-        # informative_5m['ema_obv_16'] = ta.EMA(informative_5m['obv'], timeperiod=16)
-        # informative_5m['ema_obv_20'] = ta.EMA(informative_5m['obv'], timeperiod=20)
 
         # OBV HA
         informative_5m['ha_obv'] = ta.OBV(informative_5m['ha_close'], informative_5m['volume'])
 
         # OBV MA
         informative_5m['mobv_3'] = ta.SMA(informative_5m['ha_obv'], timeperiod=3)
-        # informative_5m['mobv_6'] = ta.SMA(informative_5m['ha_obv'], timeperiod=6)
-        # informative_5m['mobv_9'] = ta.SMA(informative_5m['ha_obv'], timeperiod=9)
 
         # OBV OSCILLATOR
         informative_5m['obv_osc'] = (informative_5m['ha_obv'] - informative_5m['mobv_3']) / informative_5m['mobv_3'] * 100
-
-        # Volume EMA
-        # informative_5m['ema_volume_4'] = ta.EMA(informative_5m['volume'], timeperiod=4)
-        # informative_5m['ema_volume_8'] = ta.EMA(informative_5m['volume'], timeperiod=8)
-        # informative_5m['ema_volume_12'] = ta.EMA(informative_5m['volume'], timeperiod=12)
-        # informative_5m['ema_volume_16'] = ta.EMA(informative_5m['volume'], timeperiod=16)
-        # informative_5m['ema_volume_20'] = ta.EMA(informative_5m['volume'], timeperiod=20)
-
-        # Volume SMA
-        # informative_5m['sma_volume_9'] = ta.SMA(informative_5m['volume'], timeperiod=9)
-        # informative_5m['sma_volume_15'] = ta.SMA(informative_5m['volume'], timeperiod=15)
-        # informative_5m['sma_volume_20'] = ta.SMA(informative_5m['volume'], timeperiod=20)
-        # informative_5m['sma_volume_28'] = ta.SMA(informative_5m['volume'], timeperiod=28)
-        # informative_5m['sma_volume_30'] = ta.SMA(informative_5m['volume'], timeperiod=30)
 
         # Volume Oscilator
         informative_5m['vma_20'] = ta.SMA(informative_5m['volume'], timeperiod=20)
@@ -550,25 +508,18 @@ class TA_Collector_v1(IStrategy):
         informative_5m['macd_histogram'] = macd['macdhist']
 
         # SMA
-        informative_5m['sma_3'] = ta.SMA(informative_5m, timeperiod=3)
         informative_5m['sma_6'] = ta.SMA(informative_5m, timeperiod=6)
         informative_5m['sma_9'] = ta.SMA(informative_5m, timeperiod=9)
-        informative_5m['sma_osc'] = (informative_5m['sma_3'] - informative_5m['sma_6']) / informative_5m['sma_6'] * 100
-        # informative_5m['sma_15'] = ta.SMA(informative_5m, timeperiod=15)
-        # informative_5m['sma_20'] = ta.SMA(informative_5m, timeperiod=20)
-        # informative_5m['sma_28'] = ta.SMA(informative_5m, timeperiod=28)
-        # informative_5m['sma_30'] = ta.SMA(informative_5m, timeperiod=30)
-        # informative_5m['sma_50'] = ta.SMA(informative_5m, timeperiod=50)
-        # informative_5m['sma_75'] = ta.SMA(informative_5m, timeperiod=75)
+        informative_5m['sma_30'] = ta.SMA(informative_5m, timeperiod=30)
+        informative_5m['sma_60'] = ta.SMA(informative_5m, timeperiod=60)
+        informative_5m['sma_100'] = ta.SMA(informative_5m, timeperiod=100)
 
-        # EMA
-        # informative_5m['ema_4'] = ta.EMA(informative_5m, timeperiod=4)
-        # informative_5m['ema_8'] = ta.EMA(informative_5m, timeperiod=8)
-        # informative_5m['ema_12'] = ta.EMA(informative_5m, timeperiod=12)
-        # informative_5m['ema_16'] = ta.EMA(informative_5m, timeperiod=16)
-        # informative_5m['ema_20'] = ta.EMA(informative_5m, timeperiod=20)
-        # informative_5m['ema_26'] = ta.EMA(informative_5m, timeperiod=26)
-        # informative_5m['ema_50'] = ta.EMA(informative_5m, timeperiod=50)
+        # SMA OSCILLATOR
+        informative_5m['sma_6_osc'] = (informative_5m['close'] - informative_5m['sma_6']) / informative_5m['sma_6'] * 100
+        informative_5m['sma_9_osc'] = (informative_5m['close'] - informative_5m['sma_9']) / informative_5m['sma_9'] * 100
+        informative_5m['sma_30_osc'] = (informative_5m['close'] - informative_5m['sma_30']) / informative_5m['sma_30'] * 100
+        informative_5m['sma_60_osc'] = (informative_5m['close'] - informative_5m['sma_60']) / informative_5m['sma_60'] * 100
+        informative_5m['sma_100_osc'] = (informative_5m['close'] - informative_5m['sma_100']) / informative_5m['sma_100'] * 100
 
         # Stochastic Slow
         stoch = ta.STOCH(informative_5m)
@@ -790,21 +741,17 @@ class TA_Collector_v1(IStrategy):
         # VWAP
         dataframe['vwap_1m'] = qtpylib.rolling_vwap(dataframe)
 
+        # VWAP OSCILLATOR
+        dataframe['vwap_osc_1m'] = (dataframe['close'] - dataframe['vwap_1m']) / dataframe['vwap_1m'] * 100
+
         # OBV
         dataframe['obv_1m'] = ta.OBV(dataframe['close'], dataframe['volume'])
-        # dataframe['ema_obv_4_1m'] = ta.EMA(dataframe['obv_1m'], timeperiod=4)
-        # dataframe['ema_obv_8_1m'] = ta.EMA(dataframe['obv_1m'], timeperiod=8)
-        # dataframe['ema_obv_12_1m'] = ta.EMA(dataframe['obv_1m'], timeperiod=12)
-        # dataframe['ema_obv_16_1m'] = ta.EMA(dataframe['obv_1m'], timeperiod=16)
-        # dataframe['ema_obv_20_1m'] = ta.EMA(dataframe['obv_1m'], timeperiod=20)
 
         # OBV HA
         dataframe['ha_obv_1m'] = ta.OBV(dataframe['ha_close_1m'], dataframe['volume'])
 
         # OBV MA
         dataframe['mobv_3_1m'] = ta.SMA(dataframe['ha_obv_1m'], timeperiod=3)
-        # dataframe['mobv_6_1m'] = ta.SMA(dataframe['ha_obv_1m'], timeperiod=6)
-        # dataframe['mobv_9_1m'] = ta.SMA(dataframe['ha_obv_1m'], timeperiod=9)
 
         # OBV OSCILLATOR
         dataframe['obv_osc_1m'] = (dataframe['ha_obv_1m'] - dataframe['mobv_3_1m']) / dataframe['mobv_3_1m'] * 100
@@ -813,20 +760,6 @@ class TA_Collector_v1(IStrategy):
         dataframe['vma_20_1m'] = ta.SMA(dataframe['volume'], timeperiod=20)
         dataframe['vol_osc_1m'] = (dataframe['volume'] - dataframe['vma_20_1m']) / dataframe['vma_20_1m'] * 100
 
-        # Volume EMA
-        # dataframe['ema_volume_4_1m'] = ta.EMA(dataframe['volume'], timeperiod=4)
-        # dataframe['ema_volume_8_1m'] = ta.EMA(dataframe['volume'], timeperiod=8)
-        # dataframe['ema_volume_12_1m'] = ta.EMA(dataframe['volume'], timeperiod=12)
-        # dataframe['ema_volume_16_1m'] = ta.EMA(dataframe['volume'], timeperiod=16)
-        # dataframe['ema_volume_20_1m'] = ta.EMA(dataframe['volume'], timeperiod=20)
-
-        # Volume SMA
-        # dataframe['sma_volume_9_1m'] = ta.SMA(dataframe['volume'], timeperiod=9)
-        # dataframe['sma_volume_15_1m'] = ta.SMA(dataframe['volume'], timeperiod=15)
-        # dataframe['sma_volume_20_1m'] = ta.SMA(dataframe['volume'], timeperiod=20)
-        # dataframe['sma_volume_28_1m'] = ta.SMA(dataframe['volume'], timeperiod=28)
-        # dataframe['sma_volume_30_1m'] = ta.SMA(dataframe['volume'], timeperiod=30)
-
         # MACD
         macd = ta.MACD(dataframe, 20, 5)
         dataframe['macd_1m'] = macd['macd']
@@ -834,29 +767,18 @@ class TA_Collector_v1(IStrategy):
         dataframe['macd_histogram_1m'] = macd['macdhist']
 
         # SMA
-        dataframe['sma_3_1m'] = ta.SMA(dataframe, timeperiod=3)
         dataframe['sma_6_1m'] = ta.SMA(dataframe, timeperiod=6)
         dataframe['sma_9_1m'] = ta.SMA(dataframe, timeperiod=9)
-        dataframe['sma_osc_1m'] = (dataframe['sma_3_1m'] - dataframe['sma_6_1m']) / dataframe['sma_6_1m'] * 100
-        # dataframe['sma_15_1m'] = ta.SMA(dataframe, timeperiod=15)
-        # dataframe['sma_20_1m'] = ta.SMA(dataframe, timeperiod=20)
-        # dataframe['sma_28_1m'] = ta.SMA(dataframe, timeperiod=28)
-        # dataframe['sma_30_1m'] = ta.SMA(dataframe, timeperiod=30)
-        # dataframe['sma_50_1m'] = ta.SMA(dataframe, timeperiod=50)
-        # dataframe['sma_75_1m'] = ta.SMA(dataframe, timeperiod=75)
-        # dataframe['sma_100_1m'] = ta.SMA(dataframe, timeperiod=100)
-        # dataframe['sma_200_1m'] = ta.SMA(dataframe, timeperiod=200)
+        dataframe['sma_30_1m'] = ta.SMA(dataframe, timeperiod=30)
+        dataframe['sma_60_1m'] = ta.SMA(dataframe, timeperiod=30)
+        dataframe['sma_100_1m'] = ta.SMA(dataframe, timeperiod=100)
 
-        # EMA
-        # dataframe['ema_4_1m'] = ta.EMA(dataframe, timeperiod=4)
-        # dataframe['ema_8_1m'] = ta.EMA(dataframe, timeperiod=8)
-        # dataframe['ema_12_1m'] = ta.EMA(dataframe, timeperiod=12)
-        # dataframe['ema_16_1m'] = ta.EMA(dataframe, timeperiod=16)
-        # dataframe['ema_20_1m'] = ta.EMA(dataframe, timeperiod=20)
-        # dataframe['ema_26_1m'] = ta.EMA(dataframe, timeperiod=26)
-        # dataframe['ema_50_1m'] = ta.EMA(dataframe, timeperiod=50)
-        # dataframe['ema_100_1m'] = ta.EMA(dataframe, timeperiod=100)
-        # dataframe['ema_200_1m'] = ta.EMA(dataframe, timeperiod=200)
+        # SMA OSCILLATOR
+        dataframe['sma_6_osc_1m'] = (dataframe['close'] - dataframe['sma_6_1m']) / dataframe['sma_6_1m'] * 100
+        dataframe['sma_9_osc_1m'] = (dataframe['close'] - dataframe['sma_9_1m']) / dataframe['sma_9_1m'] * 100
+        dataframe['sma_30_osc_1m'] = (dataframe['close'] - dataframe['sma_30_1m']) / dataframe['sma_30_1m'] * 100
+        dataframe['sma_60_osc_1m'] = (dataframe['close'] - dataframe['sma_60_1m']) / dataframe['sma_60_1m'] * 100
+        dataframe['sma_100_osc_1m'] = (dataframe['close'] - dataframe['sma_100_1m']) / dataframe['sma_100_1m'] * 100
 
         # Stochastic Slow
         stoch = ta.STOCH(dataframe)
