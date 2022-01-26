@@ -419,6 +419,7 @@ class TA_Collector_v1(IStrategy):
         informative_1h['macd'] = macd['macd']
         informative_1h['macd_signal'] = macd['macdsignal']
         informative_1h['macd_histogram'] = macd['macdhist']
+        informative_1h['macd_osc'] = informative_1h['macd_histogram'] / informative_1h['close'] * 100
 
         # SMA
         informative_1h['sma_6'] = ta.SMA(informative_1h, timeperiod=6)
@@ -506,6 +507,7 @@ class TA_Collector_v1(IStrategy):
         informative_5m['macd'] = macd['macd']
         informative_5m['macd_signal'] = macd['macdsignal']
         informative_5m['macd_histogram'] = macd['macdhist']
+        informative_5m['macd_osc'] = informative_5m['macd_histogram'] / informative_5m['close'] * 100
 
         # SMA
         informative_5m['sma_6'] = ta.SMA(informative_5m, timeperiod=6)
@@ -765,6 +767,7 @@ class TA_Collector_v1(IStrategy):
         dataframe['macd_1m'] = macd['macd']
         dataframe['macd_signal_1m'] = macd['macdsignal']
         dataframe['macd_histogram_1m'] = macd['macdhist']
+        dataframe['macd_osc_1m'] = dataframe['macd_histogram_1m'] / dataframe['close_1m'] * 100
 
         # SMA
         dataframe['sma_6_1m'] = ta.SMA(dataframe, timeperiod=6)
